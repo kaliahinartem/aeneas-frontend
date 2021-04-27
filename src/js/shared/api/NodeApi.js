@@ -193,7 +193,6 @@ export const nodeApi = (baseUrl, useCustomRequestConfig) => {
             utxSize: () => retryableGet("/transactions/unconfirmed/size"),
             info: (id) => retryableGet(`/transactions/info/${id}`),
             status: async (idsArray) => {
-                console.log(idsArray);
                 const limit = 40;
                 let subarray = [];
                 for (let i = 0; i < Math.ceil(idsArray.length / limit); i++) {

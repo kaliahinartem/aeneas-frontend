@@ -1,12 +1,8 @@
 {
-    "name": "waves-blockchain-explorer",
-    "version": "3.2.3",
+    "name": "aeneas-frontent",
+    "version": "1.0.0",
     "private": true,
-    "description": "Waves blockchain information tool",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/wavesplatform/WavesExplorerLite.git"
-    },
+    "description": "Aeneas blockchain information tool",
     "license": "Apache-2.0",
     "scripts": {
         "start": "webpack-dev-server --hot --open --mode development --history-api-fallback --env.network=mainnet",

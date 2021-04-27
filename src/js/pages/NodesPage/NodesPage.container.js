@@ -32,7 +32,6 @@ export class NodesPage extends React.Component {
             .nodesService()
             .loadNodes()
             .then((nodes) => {
-                console.log(nodes);
                 this.setState({
                     nodes: nodes.map((node) => ({ ...node, version: "2.0.0" })),
                 });

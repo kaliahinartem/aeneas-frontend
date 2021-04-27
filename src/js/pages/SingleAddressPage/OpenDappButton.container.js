@@ -1,13 +1,13 @@
-import React from 'react';
-import {withRouter} from 'react-router';
+import React from "react";
+import { withRouter } from "react-router";
 
-import ServiceFactory from '../../services/ServiceFactory';
-import {OpenDappButtonView} from './OpenDappButton.view';
+import ServiceFactory from "../../services/ServiceFactory";
+import { OpenDappButtonView } from "./OpenDappButton.view";
 
 class OpenDappButtonContainer extends React.Component {
     _isMounted = false;
     state = {
-        visible: false
+        visible: false,
     };
 
     componentDidMount() {
@@ -20,41 +20,51 @@ class OpenDappButtonContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        const {networkId, address} = this.props.match.params;
-        const {networkId: prevNetworkId, address: prevAddress} = prevProps.match.params;
+        const { networkId, address } = this.props.match.params;
+        const {
+            networkId: prevNetworkId,
+            address: prevAddress,
+        } = prevProps.match.params;
 
         if (networkId !== prevNetworkId || address !== prevAddress) {
-            this.setState({visible: false});
+            this.setState({ visible: false });
             this.fetchData();
         }
     }
 
     fetchData = () => {
-        const {address, networkId} = this.props.match.params;
-        const addressService = ServiceFactory.forNetwork(networkId).addressService();
+        const { address, networkId } = this.props.match.params;
+        const addressService = ServiceFactory.forNetwork(
+            networkId
+        ).addressService();
 
-        return addressService.loadScriptMeta(address).then(response => {
+        return addressService.loadScriptMeta(address).then((response) => {
             const meta = response.meta || {};
             const version = parseInt(meta.version);
+            console.log(version);
 
-            this._isMounted && this.setState({visible: version > 0});
+            this._isMounted && this.setState({ visible: version > 0 });
         });
     };
 
     handleClick = () => {
-        const {address} = this.props.match.params;
+        const { address } = this.props.match.params;
 
         const url = `https://waves-dapp.com/${address}`;
-        window.open(url, '_blank');
+        window.open(url, "_blank");
     };
 
     render() {
-        if (!this.state.visible)
-            return null;
+        if (!this.state.visible) return null;
 
-        return <OpenDappButtonView onClick={this.handleClick}>Open Dapp</OpenDappButtonView>
+        return (
+            <OpenDappButtonView onClick={this.handleClick}>
+                Open Dapp
+            </OpenDappButtonView>
+        );
     }
 }
 
-export const RoutedOpenDappButtonContainer = withRouter(OpenDappButtonContainer);
-
+export const RoutedOpenDappButtonContainer = withRouter(
+    OpenDappButtonContainer
+);

@@ -211,11 +211,6 @@ export const nodeApi = (baseUrl, useCustomRequestConfig) => {
                                             arrayFormat: "repeat",
                                         });
                                     },
-                                    headers: {
-                                        // "Access-Control-Allow-Origin": "*",
-                                        "Referrer-Policy": "unsafe-url",
-                                        // "Content-Type": "application/json",
-                                    },
                                     params: { id },
                                 })
                             ).data

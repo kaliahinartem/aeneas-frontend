@@ -163,7 +163,7 @@ body {
         }
 
         > .logo {
-            background: url("../images/aeneas.svg") no-repeat 0 3px;
+            background: url("../images/aeneas.svg") no-repeat 0 0;
             min-height: 44px;
 
             a {
@@ -177,7 +177,7 @@ body {
             &::after {
                 content: "Explorer";
                 left: 190px;
-                bottom: -17px;
+                bottom: -12px;
                 position: relative;
                 @include font(headline2);
             }
